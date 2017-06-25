@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="paddingPantalla">24dp</dimen>
-    <dimen name="casilla">160dp</dimen>
-    <dimen name="textoTitulo">24sp</dimen>
-    <dimen name="textoBoton">20sp</dimen>
-    <dimen name="anchoMinBoton">140dp</dimen>
-    <dimen name="altoMinBoton">72dp</dimen>
-    <dimen name="MargenBoton">12dp</dimen>
+    <dimen name="casilla">70dp</dimen>
+    <dimen name="textoTitulo">25sp</dimen>
+    <dimen name="textoBoton">17sp</dimen>
+    <dimen name="anchoMinBoton">120dp</dimen>
+    <dimen name="altoMinBoton">30dp</dimen>
+    <dimen name="MargenBoton">6dp</dimen>
     <dimen name="radioBoton">12dp</dimen>
-    <dimen name="paddingBoton">12dp</dimen>
-    <dimen name="textoRadio">24sp</dimen>
+    <dimen name="paddingBoton">6dp</dimen>
+    <dimen name="textoRadio">15sp</dimen>
 </resources>

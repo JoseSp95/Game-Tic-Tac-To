@@ -2,9 +2,9 @@
 <resources>
     <dimen name="paddingPantalla">24dp</dimen>
     <dimen name="casilla">160dp</dimen>
-    <dimen name="textoTitulo">48sp</dimen>
-    <dimen name="textoBoton">36sp</dimen>
-    <dimen name="anchoMinBoton">280dp</dimen>
+    <dimen name="textoTitulo">24sp</dimen>
+    <dimen name="textoBoton">20sp</dimen>
+    <dimen name="anchoMinBoton">140dp</dimen>
     <dimen name="altoMinBoton">72dp</dimen>
     <dimen name="MargenBoton">12dp</dimen>
     <dimen name="radioBoton">12dp</dimen>

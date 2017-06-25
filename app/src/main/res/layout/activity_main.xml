@@ -1,18 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.josesp.gameofnoughtsandcrosses.MainActivity">
+    android:padding="@dimen/paddingPantalla"
+    android:weightSum = "2"
+    android:orientation="horizontal"
+    tools:context="com.example.josesp.gameofnoughtsandcrosses.MainActivity"
+    android:baselineAligned="false">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="1">
 
-</android.support.constraint.ConstraintLayout>
+
+        <TextView
+            style="@style/titulo"
+            android:text="@string/app_name"
+        />
+    
+        <Button
+            style="@style/boton"
+            android:text="@string/un_jugador"
+            android:id="@+id/unJugador" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            
+            <RadioButton
+                style="@style/radio"
+                android:id="@+id/facil"
+                android:text="@string/facil"/>
+
+            <RadioButton
+                style="@style/radio"
+                android:id="@+id/normal"
+                android:text="@string/normal"/>
+
+            <RadioButton
+                style="@style/radio"
+                android:id="@+id/imposible"
+                android:text="@string/Imposible"/>
+            
+        </RadioGroup>
+
+        <Button
+            style="@style/boton"
+            android:id="@+id/DosJugadoes"
+            android:text="@string/dos_jugadores"/>
+
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.08"
+        android:columnCount="3"
+        android:rowCount="3">
+
+        <ImageView
+            android:id="@+id/a1"
+            style="@style/casilla" />
+
+        <ImageView
+            android:id="@+id/a2"
+            style="@style/casilla" />
+
+        <ImageView
+            android:id="@+id/a3"
+            style="@style/casilla" />
+
+        <ImageView
+            android:id="@+id/a4"
+            style="@style/casilla" />
+
+        <ImageView
+            android:id="@+id/a5"
+            style="@style/casilla" />
+
+        <ImageView
+            android:id="@+id/a6"
+            style="@style/casilla" />
+
+        <ImageView
+            android:id="@+id/a7"
+            style="@style/casilla"
+            android:src="@drawable/circulo" />
+
+        <ImageView
+            android:id="@+id/a8"
+            style="@style/casilla"
+            android:src="@drawable/aspa" />
+
+        <ImageView
+            android:id="@+id/a9"
+            style="@style/casilla" />
+
+    </GridLayout>
+
+
+</LinearLayout>

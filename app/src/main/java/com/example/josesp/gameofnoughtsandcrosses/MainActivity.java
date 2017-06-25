@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
     public void aJugar(View view){
         ImageView image;
         int numberOfJugadores;
-        int dificultad;
+        int dificultad = 0;
 
         for(int casilla : casillas){
             image = (ImageView)(findViewById(casilla));
@@ -47,7 +47,17 @@ public class MainActivity extends Activity {
             numberOfJugadores = 2;
         }
 
-        dificultad = ((RadioGroup)(findViewById(R.id.configNivel))).getCheckedRadioButtonId();
+        int id = ((RadioGroup)(findViewById(R.id.configNivel))).getCheckedRadioButtonId();
+
+        if(id == R.id.facil){
+            dificultad = 0;
+        }
+        else if(id == R.id.normal){
+            dificultad = 1;
+        }
+        else if(id == R.id.imposible){
+            dificultad = 3;
+        }
 
         ((Button)(findViewById(R.id.unJugador))).setEnabled(false);
         ((Button)(findViewById(R.id.DosJugadoes))).setEnabled(false);

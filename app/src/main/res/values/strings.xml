@@ -9,4 +9,5 @@
     <string name="circulos_ganan">Circles WIN</string>
     <string name="aspas_ganan">Crosses Win</string>
     <string name="empate">Tie</string>
+    <string name="es_una_casilla">es una casilla</string>
 </resources>

@@ -32,7 +32,8 @@
 
         <RadioGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/configNivel">
             
             <RadioButton
                 style="@style/radio"
@@ -69,41 +70,50 @@
 
         <ImageView
             android:id="@+id/a1"
-            style="@style/casilla" />
+            style="@style/casilla"
+            android:contentDescription="@string/es_una_casilla" />
 
         <ImageView
             android:id="@+id/a2"
-            style="@style/casilla" />
+            style="@style/casilla"
+            android:contentDescription="@string/es_una_casilla"/>
 
         <ImageView
             android:id="@+id/a3"
-            style="@style/casilla" />
+            style="@style/casilla"
+            android:contentDescription="@string/es_una_casilla"/>
 
         <ImageView
             android:id="@+id/b1"
-            style="@style/casilla" />
+            style="@style/casilla"
+            android:contentDescription="@string/es_una_casilla"/>
 
         <ImageView
             android:id="@+id/b2"
-            style="@style/casilla" />
+            style="@style/casilla"
+            android:contentDescription="@string/es_una_casilla" />
 
         <ImageView
             android:id="@+id/b3"
-            style="@style/casilla" />
+            style="@style/casilla"
+            android:contentDescription="@string/es_una_casilla"/>
 
         <ImageView
             android:id="@+id/c1"
             style="@style/casilla"
-            android:src="@drawable/circulo" />
+            android:src="@drawable/circulo"
+            android:contentDescription="@string/es_una_casilla"/>
 
         <ImageView
             android:id="@+id/c2"
             style="@style/casilla"
-            android:src="@drawable/aspa" />
+            android:src="@drawable/aspa"
+            android:contentDescription="@string/es_una_casilla"/>
 
         <ImageView
             android:id="@+id/c3"
-            style="@style/casilla" />
+            style="@style/casilla"
+            android:contentDescription="@string/es_una_casilla"/>
 
     </GridLayout>
 

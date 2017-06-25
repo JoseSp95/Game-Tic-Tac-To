@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class MainActivity extends Activity {
 
@@ -30,10 +33,31 @@ public class MainActivity extends Activity {
 
     public void aJugar(View view){
         ImageView image;
+        int numberOfJugadores;
+        int dificultad;
+
         for(int casilla : casillas){
             image = (ImageView)(findViewById(casilla));
             image.setImageResource(R.drawable.casilla);
         }
+
+        if(view.getId() == R.id.unJugador){
+            numberOfJugadores = 1;
+        }else{
+            numberOfJugadores = 2;
+        }
+
+        dificultad = ((RadioGroup)(findViewById(R.id.configNivel))).getCheckedRadioButtonId();
+
+        ((Button)(findViewById(R.id.unJugador))).setEnabled(false);
+        ((Button)(findViewById(R.id.DosJugadoes))).setEnabled(false);
+        ((RadioGroup)(findViewById(R.id.configNivel))).setEnabled(false);
+        ((RadioButton)(findViewById(R.id.facil))).setEnabled(false);
+        ((RadioButton)(findViewById(R.id.normal))).setEnabled(false);
+        ((RadioButton)(findViewById(R.id.imposible))).setEnabled(false);
+
+        Partida partida = new Partida(dificultad);
+
     }
 
 

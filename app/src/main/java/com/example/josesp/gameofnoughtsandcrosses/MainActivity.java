@@ -3,15 +3,18 @@ package com.example.josesp.gameofnoughtsandcrosses;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
     private int[] casillas;
+    private Partida partida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +62,47 @@ public class MainActivity extends Activity {
             dificultad = 3;
         }
 
-        ((Button)(findViewById(R.id.unJugador))).setEnabled(false);
-        ((Button)(findViewById(R.id.DosJugadoes))).setEnabled(false);
-        ((RadioGroup)(findViewById(R.id.configNivel))).setEnabled(false);
-        ((RadioButton)(findViewById(R.id.facil))).setEnabled(false);
-        ((RadioButton)(findViewById(R.id.normal))).setEnabled(false);
-        ((RadioButton)(findViewById(R.id.imposible))).setEnabled(false);
+        findViewById(R.id.unJugador).setEnabled(false);
+        findViewById(R.id.DosJugadoes).setEnabled(false);
+        findViewById(R.id.configNivel).setEnabled(false);
+        findViewById(R.id.facil).setEnabled(false);
+        findViewById(R.id.normal).setEnabled(false);
+        findViewById(R.id.imposible).setEnabled(false);
 
-        Partida partida = new Partida(dificultad);
+        partida = new Partida(dificultad);
+
+    }
+
+    public void toque(View view){
+
+        if(partida == null){
+            return;
+        }
+
+        int id = view.getId();
+        int i;
+        int casillaElegida = 0;
+        for(i = 0; i < casillas.length ; i++){
+            if(casillas[i] == id){
+                casillaElegida = i;
+                break;
+            }
+        }
+
+        Toast toast = Toast.makeText(this,"Casilla : " + casillaElegida,Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
+
+        marca(casillaElegida);
+    }
+
+    public void marca(int casillaElegida){
+        ImageView imagen = (ImageView)findViewById(casillas[casillaElegida]);
+        if(partida.getJugador() == 1){
+            imagen.setImageResource(R.drawable.circulo);
+        }else{
+            imagen.setImageResource(R.drawable.aspa);
+        }
 
     }
 

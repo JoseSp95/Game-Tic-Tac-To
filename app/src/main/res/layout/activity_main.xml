@@ -26,6 +26,7 @@
     
         <Button
             style="@style/boton"
+            android:onClick="aJugar"
             android:text="@string/un_jugador"
             android:id="@+id/unJugador"
             />
@@ -54,6 +55,7 @@
         </RadioGroup>
 
         <Button
+            android:onClick="aJugar"
             style="@style/boton"
             android:id="@+id/DosJugadoes"
             android:text="@string/dos_jugadores"/>

@@ -103,13 +103,11 @@
         <ImageView
             android:id="@+id/c1"
             style="@style/casilla"
-            android:src="@drawable/circulo"
             android:contentDescription="@string/es_una_casilla"/>
 
         <ImageView
             android:id="@+id/c2"
             style="@style/casilla"
-            android:src="@drawable/aspa"
             android:contentDescription="@string/es_una_casilla"/>
 
         <ImageView

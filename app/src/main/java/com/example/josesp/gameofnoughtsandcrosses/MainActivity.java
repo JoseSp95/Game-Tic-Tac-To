@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
     private int[] casillas;
-    private Partida partida;
+    private static Partida partida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
         casillas[6] = R.id.c1;
         casillas[7] = R.id.c2;
         casillas[8] = R.id.c3;
+
     }
 
     public void aJugar(View view){
@@ -88,20 +89,32 @@ public class MainActivity extends Activity {
                 break;
             }
         }
-
+        /*
         Toast toast = Toast.makeText(this,"Casilla : " + casillaElegida,Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER,0,0);
         toast.show();
+        */
+
+        if(partida.comprobarCasilla(casillaElegida) == false){
+            return;
+        }
+        marca(casillaElegida);
+        partida.turno();
+        casillaElegida = partida.ia();
+        while(partida.comprobarCasilla(casillaElegida)==false){
+            casillaElegida = partida.ia();
+        }
 
         marca(casillaElegida);
+        partida.turno();
     }
 
     public void marca(int casillaElegida){
         ImageView imagen = (ImageView)findViewById(casillas[casillaElegida]);
         if(partida.getJugador() == 1){
-            imagen.setImageResource(R.drawable.circulo);
-        }else{
             imagen.setImageResource(R.drawable.aspa);
+        }else{
+            imagen.setImageResource(R.drawable.circulo);
         }
 
     }

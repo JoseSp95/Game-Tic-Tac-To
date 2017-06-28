@@ -23,29 +23,68 @@ public class Partida {
 
     public int ia(){
         int casilla;
+        casilla = dosEnRaya(2);
+        if(casilla != -1){
+            return casilla;
+        }
+        if(dificultad >= 1){
+            casilla = dosEnRaya(1);
+            if(casilla != -1){
+                return casilla;
+            }
+        }
+
+        if(dificultad == 2){
+            if(casillas[0] == 0)
+                return 0;
+            if(casillas[2] == 0)
+                return 2;
+            if(casillas[6] == 0)
+                return 6;
+            if(casillas[8] == 0){
+                return 8;
+            }
+        }
+
+
         casilla = new Random().nextInt(9);
         return casilla;
     }
 
     public int turno(){
         int i;
+        boolean ganador;
         boolean empate = true;
+        int jugadorAux = jugador;
+
+        jugador++;
+        if(jugador > 2){
+            jugador = 1;
+        }
+
         for(i = 0; i < combinaciones.length; i++){
+            ganador = true;
             for(int pos : combinaciones[i]){
+                if(casillas[pos] != jugadorAux){
+                    ganador = false;
+                }
+
                 if(casillas[pos] == 0){
                     empate = false;
                 }
             }
+
+            if(ganador){
+                return 3;
+            }
+
         }
 
         if(empate){
             return 3;
         }
 
-        jugador++;
-        if(jugador > 2){
-            jugador = 1;
-        }
+
         return 0;
     }
 
@@ -56,6 +95,31 @@ public class Partida {
             casillas[numberOfCasilla] = jugador;
             return true;
         }
+    }
+
+    public int dosEnRaya(int jugadorEnTurno){
+        int casilla = -1;
+        int nroCasillasAcertadas = 0;
+        int i;
+
+        for(i = 0 ; i < combinaciones.length; i++){
+            nroCasillasAcertadas = 0;
+            casilla = -1;
+            for(int pos : this.combinaciones[i]){
+                if(casillas[pos] == jugadorEnTurno){
+                    nroCasillasAcertadas++;
+                }
+                if(casillas[pos] == 0){
+                    casilla = pos;
+                }
+            }
+
+            if(nroCasillasAcertadas == 2 && casilla != -1){
+                return casilla;
+            }
+
+        }
+        return -1;
     }
 
 }

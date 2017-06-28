@@ -36,14 +36,9 @@ public class MainActivity extends Activity {
     }
 
     public void aJugar(View view){
-        ImageView image;
         int numberOfJugadores;
         int dificultad = 0;
-
-        for(int casilla : casillas){
-            image = (ImageView)(findViewById(casilla));
-            image.setImageResource(R.drawable.casilla);
-        }
+        limpiarCasillas();
 
         if(view.getId() == R.id.unJugador){
             numberOfJugadores = 1;
@@ -60,22 +55,16 @@ public class MainActivity extends Activity {
             dificultad = 1;
         }
         else if(id == R.id.imposible){
-            dificultad = 3;
+            dificultad = 2;
         }
 
-        findViewById(R.id.unJugador).setEnabled(false);
-        findViewById(R.id.DosJugadoes).setEnabled(false);
-        findViewById(R.id.configNivel).setEnabled(false);
-        findViewById(R.id.facil).setEnabled(false);
-        findViewById(R.id.normal).setEnabled(false);
-        findViewById(R.id.imposible).setEnabled(false);
-
+        deshabilitarBotones();
+        System.out.println("antes");
         partida = new Partida(dificultad);
-
+        System.out.println("comenzo");
     }
 
     public void toque(View view){
-
         if(partida == null){
             return;
         }
@@ -89,6 +78,7 @@ public class MainActivity extends Activity {
                 break;
             }
         }
+
         /*
         Toast toast = Toast.makeText(this,"Casilla : " + casillaElegida,Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER,0,0);
@@ -100,6 +90,7 @@ public class MainActivity extends Activity {
         }
         marca(casillaElegida);
         partida.turno();
+
         casillaElegida = partida.ia();
         while(partida.comprobarCasilla(casillaElegida)==false){
             casillaElegida = partida.ia();
@@ -116,8 +107,38 @@ public class MainActivity extends Activity {
         }else{
             imagen.setImageResource(R.drawable.circulo);
         }
-
     }
 
+    public void reiniciar(View view){
+        partida = null;
+        habilitarBotones();
+        limpiarCasillas();
+    }
+
+    public void limpiarCasillas(){
+        ImageView image;
+        for(int casilla : casillas){
+            image = (ImageView)(findViewById(casilla));
+            image.setImageResource(R.drawable.casilla);
+        }
+    }
+
+    public void deshabilitarBotones(){
+        findViewById(R.id.unJugador).setEnabled(false);
+        findViewById(R.id.DosJugadoes).setEnabled(false);
+        findViewById(R.id.configNivel).setEnabled(false);
+        findViewById(R.id.facil).setEnabled(false);
+        findViewById(R.id.normal).setEnabled(false);
+        findViewById(R.id.imposible).setEnabled(false);
+    }
+
+    public void habilitarBotones(){
+        findViewById(R.id.unJugador).setEnabled(true);
+        findViewById(R.id.DosJugadoes).setEnabled(true);
+        findViewById(R.id.configNivel).setEnabled(true);
+        findViewById(R.id.facil).setEnabled(true);
+        findViewById(R.id.normal).setEnabled(true);
+        findViewById(R.id.imposible).setEnabled(true);
+    }
 
 }

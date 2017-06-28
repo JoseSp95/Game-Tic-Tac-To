@@ -59,6 +59,11 @@
             style="@style/boton"
             android:id="@+id/DosJugadoes"
             android:text="@string/dos_jugadores"/>
+        <Button
+            style="@style/boton"
+            android:text="Reiniciar"
+            android:onClick="reiniciar"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

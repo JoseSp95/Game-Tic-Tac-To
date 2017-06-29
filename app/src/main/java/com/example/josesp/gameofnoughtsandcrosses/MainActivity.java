@@ -59,9 +59,7 @@ public class MainActivity extends Activity {
         }
 
         deshabilitarBotones();
-        System.out.println("antes");
         partida = new Partida(dificultad);
-        System.out.println("comenzo");
     }
 
     public void toque(View view){
@@ -72,6 +70,8 @@ public class MainActivity extends Activity {
         int id = view.getId();
         int i;
         int casillaElegida = 0;
+        int resultado;
+
         for(i = 0; i < casillas.length ; i++){
             if(casillas[i] == id){
                 casillaElegida = i;
@@ -79,25 +79,25 @@ public class MainActivity extends Activity {
             }
         }
 
-        /*
-        Toast toast = Toast.makeText(this,"Casilla : " + casillaElegida,Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER,0,0);
-        toast.show();
-        */
-
-        if(partida.comprobarCasilla(casillaElegida) == false){
+        if(!partida.comprobarCasilla(casillaElegida)){
             return;
         }
         marca(casillaElegida);
-        partida.turno();
-
+        resultado = partida.turno();
+        if(resultado > 0){
+            finDelJuego(resultado);
+            return;
+        }
         casillaElegida = partida.ia();
-        while(partida.comprobarCasilla(casillaElegida)==false){
+        while(!partida.comprobarCasilla(casillaElegida)){
             casillaElegida = partida.ia();
         }
 
         marca(casillaElegida);
-        partida.turno();
+        resultado = partida.turno();
+        if(resultado > 0){
+            finDelJuego(resultado);
+        }
     }
 
     public void marca(int casillaElegida){
@@ -139,6 +139,28 @@ public class MainActivity extends Activity {
         findViewById(R.id.facil).setEnabled(true);
         findViewById(R.id.normal).setEnabled(true);
         findViewById(R.id.imposible).setEnabled(true);
+    }
+
+    public void finDelJuego(int resultado){
+        String mensaje;
+        Toast toast;
+        if(resultado == 1){
+            mensaje = "Ganan las Aspas";
+            toast = Toast.makeText(this,mensaje,Toast.LENGTH_LONG);
+        }else if(resultado == 2){
+            mensaje = "Ganan los Circulos";
+            toast = Toast.makeText(this,mensaje,Toast.LENGTH_LONG);
+        }else{
+            mensaje = "Empate";
+            toast = Toast.makeText(this,mensaje,Toast.LENGTH_LONG);
+        }
+
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
+
+        //limpiarCasillas();
+        habilitarBotones();
+        partida = null;
     }
 
 }

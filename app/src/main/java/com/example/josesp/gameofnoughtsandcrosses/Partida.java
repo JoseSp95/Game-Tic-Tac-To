@@ -75,7 +75,7 @@ public class Partida {
             }
 
             if(ganador){
-                return 3;
+                return jugadorAux;
             }
 
         }
